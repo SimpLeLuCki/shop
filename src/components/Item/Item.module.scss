@@ -4,6 +4,8 @@
     background: #a2daea;
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
+    padding-bottom: 25px;
 
     img {
         width: 100%;
@@ -14,4 +16,25 @@
     img:hover {
         transform: scale(1.05);
     }
+
+    .addToCart {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        background: orange;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        line-height: 35px;
+        border-radius: 30%;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 20px;
+        transition: transform 1000ms ease;
+    }
+
+    .addToCart:hover{
+        transform: scale(1.2) translateY(-5px);
+    }
+
 }

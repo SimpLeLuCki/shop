@@ -101,14 +101,20 @@ export default function App() {
       price: '6 495 руб'
     },
 
-
-
   ]);
+
+  const[orders,setOrders]=useState([]);
+
+  const addToOrder=(item)=>{
+    if(!orders.some((el)=>el.id===item.id)){
+      setOrders([...orders,item]);
+    }
+  }
 
   return (
     <div className="wrapper">
-      <Header />
-      <Items allItems={items}/>
+      <Header orders={orders}/>
+      <Items allItems={items} onAdd={addToOrder}/>
       <Footer />
     </div>
   );

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { MdOutlineShoppingCart } from "react-icons/md";
 import styles from "./Header.module.scss";
 
-export default function Header(){
-    return(
+
+export default function Header() {
+    let [cartOpen,setCartOpen]=useState(false);
+
+    return (
         <header>
             <div>
                 <span className={styles.logo}>Phoen Sell</span>
@@ -11,6 +15,14 @@ export default function Header(){
                     <li>Контакты</li>
                     <li>Личный кабинет</li>
                 </ul>
+                <MdOutlineShoppingCart onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`${styles.shopCartButton} ${cartOpen ? styles.active : ''}`} />
+            
+                {cartOpen &&(
+                    <div className={styles.shopCart}>
+
+                    </div>
+
+                )}
             </div>
             <div className={styles.presentation}></div>
         </header>

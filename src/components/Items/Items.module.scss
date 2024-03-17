@@ -3,4 +3,20 @@ main{
     width: 100%;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    h2,p,b{
+        margin: 10px 20px;
+        color: #484848;
+    }
+
+    p{
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    b{
+        color: orange;
+        font-size: 20px;
+    }
+
 }
