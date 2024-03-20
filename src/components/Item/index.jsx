@@ -7,7 +7,7 @@ export default function Items(props){
             <img src={"./images/"+props.item.img} alt="Error"></img>
             <h2>{props.item.title}</h2>
             <p>{props.item.desc}</p>
-            <b>{props.item.price}$</b>
+            <b>{props.item.price} руб</b>
             <div className={styles.addToCart} onClick={()=>props.onAdd(props.item)}>+</div>
         </div>
     )

@@ -10,18 +10,21 @@ export default function Header(props) {
     let [cartOpen, setCartOpen] = useState(false);
 
     const showOrders = (props) => {
+        let summa = 0;
+        props.orders.forEach(el => summa += Number.parseFloat(el.price));
         return (
             <div>
                 {props.orders.map(el => (
-                    <Orders key={el.id} item={el} />
+                    <Orders onDeLete={props.onDeLete} key={el.id} item={el} />
                 ))}
+                <p className={styles.summa}>Итого: {new Intl.NumberFormat().format(summa)} руб</p>
             </div>
         );
     }
 
     const showNothing = () => {
         return (
-            <div className="styles.empty">
+            <div className={styles.empty}>
                 <h2>Товары отсутствуют в корзине</h2>
             </div>
         );

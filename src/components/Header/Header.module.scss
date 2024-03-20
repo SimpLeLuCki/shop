@@ -1,13 +1,19 @@
 header {
     position: relative;
 
-    .empty{
-
-        h2{
-            font-size: 20px;
-            margin-bottom: 20px;
+    .empty {
+        h2 {
+          font-size: 20px; 
+          margin-bottom: 20px; 
         }
+    }
 
+    .summa{
+        float: left;
+        width: 100%;
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 20px;
     }
 
     .logo {
@@ -63,12 +69,13 @@ header {
         z-index: 1000;
         padding: 20px;
         padding-bottom: 0;
-
+        border-radius: 20px;
 
     }
 
     .presentation {
         margin: 50px 0;
     }
+
 
 }
