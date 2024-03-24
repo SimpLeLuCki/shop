@@ -1,8 +1,8 @@
 .fullItem {
     position: fixed;
     top: 0;
-    right: 0;
     left: 0;
+    right: 0;
     bottom: 0;
     background: rgba(0, 0, 1, 0.634);
     z-index: 9999;
@@ -12,25 +12,22 @@
     p,
     b {
         margin: 10px 20px;
-        color: orange;
+        color: black;
         padding-bottom: 25px;
-        font-size: 20px;
     }
 
     b {
         color: orange;
-        font-size: 30px;
     }
 
     .addToCart {
         position: absolute;
-        width: 0px;
+        width: 5px;
         height: 0px;
-        right: 0px;
-        bottom: 0px;
+        right: 20px;
+        bottom: -40px;
         transition: transform 500ms ease;
         background: orange;
-        color: white;
         font-size: 20px;
         font-weight: 600;
 
@@ -47,10 +44,9 @@
             transition: transform 500ms ease;
 
             &:hover {
-                transform: scale(1.05);
+                transform: scale(1.02);
             }
         }
-
     }
 
     div {
@@ -59,6 +55,7 @@
         margin: 10% auto;
         padding: 40px 30px;
         border-radius: 15px;
+        background: #a2daea;
 
         img {
             width: 600px;

@@ -1,7 +1,10 @@
-import React from "react";
-import styles from "./Categorise.module.scss"
+import React, {useContext} from "react";
+import styles from "./Categorise.module.scss";
+import { useAppContext } from "../../UseAppContext";
 
-export default function Categories(props) {
+export default function Categories() {
+
+    const {chooseCategore}=useAppContext();
 
     const categories = [
         {
@@ -21,7 +24,7 @@ export default function Categories(props) {
     return (
         <div className={styles.categories}>
             {categories.map(el => (
-                <div key={el.key} onClick={()=>props.chooseCategore(el.key)}>{el.name}</div>
+                <div key={el.key} onClick={()=>chooseCategore(el.key)}>{el.name}</div>
             ))}
         </div>
     );

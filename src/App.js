@@ -1,16 +1,17 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect,createContext,useContext} from "react";
 import Header from "./components/Header";
 import Items from "./components/Items"
 import Footer from "./components/Footer";
 import "./index.scss";
 import Categories from "./components/Categories";
-import ShowFullItem from "./components/ShowFullItem";
+import ShowFullItem from "./components/ShowFullItem"
 
+const AppContext = createContext();
 
 export default function App() {
 
-  const [items/*, setItems*/] = useState([
+  const [items, setItems] = useState([
 
     {
       id: 1,
@@ -105,48 +106,69 @@ export default function App() {
 
   ]);
 
-  const[orders,setOrders]=useState([]);
-  const[currentItems,setCurrentItems]=useState([]);
-  const[showFullItem,setShowFullItem]=useState(false);
-  const[fullItem,setFullItem]=useState({});
+  const [orders, setOrders] = useState([]);
+  const [currentItems, setCurrentItems] = useState([]);
+  const [showFullItem, setShowFullItem] = useState(false);
+  const [fullIem,setFullItem]=useState({});
 
-  useEffect(()=>{
+  useEffect(() => {
     setCurrentItems(items);
-  },[items]);
+  }, [items]);
 
-  const deleteOrder = (id) =>{
-    setOrders(orders.filter((el)=> el.id!==id));
+  const deleteOrder = (id) => {
+    setOrders(orders.filter((el) => el.id !== id));
   }
 
-  const addToOrder=(item)=>{
-    if(!orders.some((el)=>el.id===item.id)){
-      setOrders([...orders,item]);
+  const addToOrder = (item) => {
+    if (!orders.some((el) => el.id === item.id)) {
+      setOrders([...orders, item]);
     }
     /*setOrders([...orders.item]);*/
   }
 
-  const chooseCategore = (category)=>{
-    if(category==="all"){
+  const chooseCategore = (category) => {
+    if (category === "all") {
       setCurrentItems(items);
     }
-    else{
-      setCurrentItems(items.filter((el)=>el.category===category));
+    else {
+      setCurrentItems(items.filter((el) => el.category === category));
     }
   }
 
-  const onShowItem = (item) =>{
+  const onShowItem = (item) => {
     setFullItem(item);
     setShowFullItem(!showFullItem);
   }
 
   return (
+    <AppContext.Provider
+      value={
+        {
+          items,
+          setItems,
+          orders,
+          setOrders,
+          currentItems,
+          setCurrentItems,
+          showFullItem,
+          setShowFullItem,
+          fullIem,
+          setFullItem,
+          deleteOrder,
+          addToOrder,
+          chooseCategore,
+          onShowItem,
+        }
+      }
+    >
     <div className="wrapper">
-      <Header orders={orders} onDeLete={deleteOrder}/>
-      <Categories chooseCategore={chooseCategore}/>
-      <Items allItems={currentItems} onShowItem={onShowItem} onAdd={addToOrder}/>
-      {showFullItem && <ShowFullItem onShowItem={onShowItem} onAdd={addToOrder} item={fullItem}/>}
+      <Header/>
+      <Categories/>
+      <Items/>
+      {showFullItem && <ShowFullItem/>}
       <Footer />
     </div>
+    </AppContext.Provider>
   );
 }
 
