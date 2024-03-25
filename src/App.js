@@ -1,11 +1,13 @@
-import React from "react";
+/*import React from "react";
 import { useState, useEffect,createContext,useContext} from "react";
 import Header from "./components/Header";
 import Items from "./components/Items"
 import Footer from "./components/Footer";
 import "./index.scss";
 import Categories from "./components/Categories";
-import ShowFullItem from "./components/ShowFullItem"
+import ShowFullItem from "./components/ShowFullItem";
+
+
 
 const AppContext = createContext();
 
@@ -123,7 +125,6 @@ export default function App() {
     if (!orders.some((el) => el.id === item.id)) {
       setOrders([...orders, item]);
     }
-    /*setOrders([...orders.item]);*/
   }
 
   const chooseCategore = (category) => {
@@ -170,5 +171,32 @@ export default function App() {
     </div>
     </AppContext.Provider>
   );
+}*/
+
+
+
+
+import React from "react";
+import Header from "./components/Header";
+import Items from "./components/Items";
+import Footer from "./components/Footer";
+import "./index.scss";
+import Categories from "./components/Categories";
+import ShowFullItem from "./components/ShowFullItem";
+import { useAppContext } from "./UseAppContext";
+
+export default function App() {
+    const { showFullItem } = useAppContext();
+    return (
+        <div className="wrapper">
+            <Header />
+            <Categories />
+            <Items />
+            {showFullItem && <ShowFullItem />}
+            <Footer />
+        </div>
+    );
 }
+
+
 

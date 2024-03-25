@@ -1,14 +1,18 @@
 import React from "react";
 import styles from "./Orders.module.scss"
 import { MdDeleteForever } from "react-icons/md";
+import {useAppContext} from "./../../UseAppContext";
 
-export default function Orders(props){
+export default function Orders({item}){
+
+    const{deleteOrder}=useAppContext();
+
     return(
         <div className={styles.item}>
-            <img src={"./images/"+props.item.img} alt="Error"></img>
-            <h2>{props.item.title}</h2>
-            <b>{props.item.price} руб</b>
-            <MdDeleteForever onClick={()=>props.onDeLete(props.item.id)} className={styles.deleteIcon}/>
+            <img src={"./images/"+item.img} alt="Error"></img>
+            <h2>{item.title}</h2>
+            <b>{item.price} руб</b>
+            <MdDeleteForever onClick={()=>deleteOrder(item.id)} className={styles.deleteIcon}/>
         </div>
     );
 }

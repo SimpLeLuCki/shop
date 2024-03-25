@@ -12,7 +12,7 @@ export const useAppContext = () => {
     return context;
 }
 
-export const AppProvider = ({ children }) => {
+const  AppProvider = ({ children }) => {
     const [items, setItems] = useState([{
         id: 1,
         title: 'Смарт-часы Samsung Galaxy Fit1',
@@ -155,5 +155,7 @@ export const AppProvider = ({ children }) => {
         onShowItem,
     };
 
-    return <AppContext.Provider value={contextValue}></AppContext.Provider>
+    return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
 };
+
+export default AppProvider;

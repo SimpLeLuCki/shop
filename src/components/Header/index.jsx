@@ -2,20 +2,23 @@ import React, { useState } from "react";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import styles from "./Header.module.scss";
 import Orders from "../Orders";
+import {useAppContext} from "./../../UseAppContext";
 
 
 
 
-export default function Header(props) {
+export default function Header() {
+    const {orders,deleteOrder} = useAppContext();
+
     let [cartOpen, setCartOpen] = useState(false);
 
-    const showOrders = (props) => {
+    const showOrders = () => {
         let summa = 0;
-        props.orders.forEach(el => summa += Number.parseFloat(el.price));
+        orders.forEach(el => summa += Number.parseFloat(el.price));
         return (
             <div>
-                {props.orders.map(el => (
-                    <Orders onDeLete={props.onDeLete} key={el.id} item={el} />
+                {orders.map(el => (
+                    <Orders onDeLete={deleteOrder} key={el.id} item={el} />
                 ))}
                 <p className={styles.summa}>Итого: {new Intl.NumberFormat().format(summa)} руб</p>
             </div>
@@ -43,8 +46,8 @@ export default function Header(props) {
 
                 {cartOpen && (
                     <div className={styles.shopCart}>
-                        {props.orders.length > 0 ?
-                            showOrders(props) : showNothing()
+                        {orders.length > 0 ?
+                            showOrders() : showNothing()
                         }
                     </div>
 
