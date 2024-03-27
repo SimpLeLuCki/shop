@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./ShowFullItem.module.scss"
-import { useAppContext } from "./../../UseAppContext";
+import { useAppContext } from "./../../UseAppContext.tsx";
 
 
-export default function ShowFullItem() {
+const ShowFullItem:React.FC=()=>{
 
     const { fullItem, onShowItem, addToOrder } = useAppContext();
 
@@ -18,5 +18,7 @@ export default function ShowFullItem() {
             </div>
         </div>
     );
-}
+};
+
+export default ShowFullItem;
 

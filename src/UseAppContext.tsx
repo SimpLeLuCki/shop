@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
-const AppContext = React.createContext();
+const AppContext = React.createContext<any>(null);
 
 export const useAppContext = () => {
     const context = useContext(AppContext);
@@ -12,8 +12,8 @@ export const useAppContext = () => {
     return context;
 }
 
-const  AppProvider = ({ children }) => {
-    const [items, setItems] = useState([{
+const  AppProvider:React.FC<{children:React.ReactNode}> = ({ children }) => {
+    const [items, setItems] = useState<any[]>([{
         id: 1,
         title: 'Смарт-часы Samsung Galaxy Fit1',
         img: 'smart watch.webp',
@@ -104,27 +104,27 @@ const  AppProvider = ({ children }) => {
         price: '6494'
     }]);
 
-    const [orders, setOrders] = useState([]);
-    const [currentItems, setCurrentItems] = useState([]);
-    const [showFullItem, setShowFullItem] = useState(false);
-    const [fullIem, setFullItem] = useState({});
+    const [orders, setOrders] = useState<any[]>([]);
+    const [currentItems, setCurrentItems] = useState<any[]>([]);
+    const [showFullItem, setShowFullItem] = useState<boolean>(false);
+    const [fullIem, setFullItem] = useState<any>({});
 
     useEffect(() => {
         setCurrentItems(items);
     }, [items]);
 
-    const deleteOrder = (id) => {
+    const deleteOrder = (id:number) => {
         setOrders(orders.filter((el) => el.id !== id));
     }
 
-    const addToOrder = (item) => {
+    const addToOrder = (item:any) => {
         if (!orders.some((el) => el.id === item.id)) {
             setOrders([...orders, item]);
         }
         /*setOrders([...orders.item]);*/
     }
 
-    const chooseCategore = (category) => {
+    const chooseCategore = (category:string) => {
         if (category === "all") {
             setCurrentItems(items);
         }
@@ -133,7 +133,7 @@ const  AppProvider = ({ children }) => {
         }
     }
 
-    const onShowItem = (item) => {
+    const onShowItem = (item:any) => {
         setFullItem(item);
         setShowFullItem(!showFullItem);
     }

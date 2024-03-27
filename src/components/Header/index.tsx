@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import styles from "./Header.module.scss";
-import Orders from "../Orders";
-import {useAppContext} from "./../../UseAppContext";
+import Orders from "../Orders/index.tsx";
+import { useAppContext } from "./../../UseAppContext.tsx";
 
 
 
 
-export default function Header() {
-    const {orders,deleteOrder} = useAppContext();
+const Header: React.FC = () => {
+    const { orders } = useAppContext();
 
-    let [cartOpen, setCartOpen] = useState(false);
+    let [cartOpen, setCartOpen] = useState<boolean>(false);
 
     const showOrders = () => {
         let summa = 0;
@@ -18,7 +18,7 @@ export default function Header() {
         return (
             <div>
                 {orders.map(el => (
-                    <Orders onDeLete={deleteOrder} key={el.id} item={el} />
+                    <Orders key={el.id} item={el} />
                 ))}
                 <p className={styles.summa}>Итого: {new Intl.NumberFormat().format(summa)} руб</p>
             </div>
@@ -42,7 +42,7 @@ export default function Header() {
                     <li>Контакты</li>
                     <li>Личный кабинет</li>
                 </ul>
-                <MdOutlineShoppingCart onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`${styles.shopCartButton} ${cartOpen ? styles.active : ''}`} />
+                <MdOutlineShoppingCart onClick={() => setCartOpen((prevCartOpen) => !prevCartOpen)} className={`${styles.shopCartButton} ${cartOpen ? styles.active : ''}`} />
 
                 {cartOpen && (
                     <div className={styles.shopCart}>
@@ -56,4 +56,6 @@ export default function Header() {
             <div className={styles.presentation}></div>
         </header>
     );
-}
+};
+
+export default Header;

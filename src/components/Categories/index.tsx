@@ -1,12 +1,18 @@
 import React, {useContext} from "react";
 import styles from "./Categorise.module.scss";
-import { useAppContext } from "../../UseAppContext";
+import { useAppContext } from "./../../UseAppContext.tsx";
 
-export default function Categories() {
+
+interface Category{
+    key:string;
+    name:string;
+}
+
+const Categories:React.FC=()=>{
 
     const {chooseCategore}=useAppContext();
 
-    const categories = [
+    const categories:Category[] = [
         {
             key: "all",
             name: "Все"
@@ -28,4 +34,6 @@ export default function Categories() {
             ))}
         </div>
     );
-}
+};
+
+export default Categories;

@@ -1,8 +1,12 @@
 import React from "react";
 import styles from "./Item.module.scss"
-import {useAppContext} from "./../../UseAppContext";
+import { useAppContext } from "./../../UseAppContext.tsx";
 
-export default function Items({item}){
+interface Props{
+    item:any;
+}
+
+const Item:React.FC<Props>=({item})=>{
 
     const {onShowItem,addToOrder} = useAppContext();
 
@@ -15,4 +19,6 @@ export default function Items({item}){
             <div className={styles.addToCart} onClick={()=>addToOrder(item)}>+</div>
         </div>
     )
-}
+};
+
+export default Item;
